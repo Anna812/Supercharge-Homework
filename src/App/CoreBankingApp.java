@@ -22,16 +22,16 @@ public class CoreBankingApp {
             if(input.equals("d")){
                 System.out.println("Type the amount you want to deposit, please.");
                 int amount = Integer.parseInt(userInput.next());
-                logic.deposit(amount);
+                logic.startTransaction(amount, "Deposit");
             } else if (input.equals("w")) {
                 System.out.println("Type the amount you want to withdraw, please.");
                 int amount = Integer.parseInt(userInput.next());
-                logic.withdraw(amount);
+                logic.startTransaction(amount, "Withdraw");
             } else if (input.equals("t")) {
                 System.out.println("Type the amount you want to transfer, please.");
                 int amount = Integer.parseInt(userInput.next());
                 System.out.println("Type the account you want to transfer to, please.");
-                logic.transfer(amount, userInput.next());
+                logic.startTransaction(amount, "Transfer");
             } else if (input.equals("h")) {
                 System.out.printf("If you want an unsorted history, type \"u\".");
                 System.out.printf("If you want to sort account history by type of transaction, please write that given transaction type e.g. deposit, withdraw, transfer.");
