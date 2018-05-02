@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,13 +16,17 @@ import java.util.List;
 public class FileIO {
     private static final String filePath = "resources/TransactionHistory.txt";
 
-    public ArrayList<String> readTransactionsFromFile() {
-        ArrayList<String> fileContent = new ArrayList<>();
+    public ArrayList<Transaction> readTransactionsFromFile() {
+        ArrayList<Transaction> fileContent = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line = br.readLine();
 
             while (line != null) {
-                fileContent.add(line);
+                String[] splittedLine = line.split(" ");
+                Transaction temp = new Transaction(splittedLine[0], Integer.parseInt(splittedLine[1]));
+                temp.timeOfTransaction = LocalDateTime.parse(splittedLine[3]);
+                fileContent.add(temp);
+
                 line = br.readLine();
             }
         } catch (Exception e) {
