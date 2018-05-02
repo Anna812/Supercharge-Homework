@@ -36,7 +36,7 @@ public class Logic implements ILogic {
     }
 
     @Override
-    public ArrayList<String> history(String parameter) {
+    public ArrayList<String> getAccountHistory(String parameter) {
         if(parameter.equals("u")) {
             return fileIO.readTransactionsFromFile();
         } else if (parameter.equalsIgnoreCase("deposit")) {
@@ -57,7 +57,7 @@ public class Logic implements ILogic {
         return null;
     }
 
-    public ArrayList<String> getCertainTypeOfTransactions(String typeOfTransaction) {
+    private ArrayList<String> getCertainTypeOfTransactions(String typeOfTransaction) {
         ArrayList<String> history = fileIO.readTransactionsFromFile();
         ArrayList result = new ArrayList();
         for (String temp : history) {

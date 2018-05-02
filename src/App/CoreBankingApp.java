@@ -2,6 +2,7 @@ package App;
 
 import BankingLogic.Logic;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CoreBankingApp {
@@ -35,7 +36,10 @@ public class CoreBankingApp {
                 System.out.printf("If you want an unsorted history, type \"u\".");
                 System.out.printf("If you want to sort account history by type of transaction, please write that given transaction type e.g. deposit, withdraw, transfer.");
                 System.out.printf("If you want  to sort account history by date, please write \"Desc\" if you want a descending order os \"Asc\" if you want to see an ascending order");
-                logic.history(userInput.next());
+                ArrayList<String> accountHistory = logic.getAccountHistory(userInput.next());
+                for (String temp : accountHistory) {
+                    System.out.println(temp);
+                }
             } else if (input.equals("q")) {
                 System.out.println("Thank you for using our service!");
                 break;
