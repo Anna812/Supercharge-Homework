@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FileIO {
+    private static final String filePath = "resources/TransactionHistory.txt";
+    
     public String readTransactionsFromFile() {
         String fileContent = "";
-        try(BufferedReader br = new BufferedReader(new FileReader("resources/TransactionHistory.txt"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 
