@@ -34,7 +34,7 @@ public class FileIO {
     public void writeTransactionsToFile(String transaction) {
         List<String> input = Arrays.asList(transaction);
         Path file = Paths.get(filePath);
-        
+
         try {
             Files.write(file, input, Charset.forName("UTF-8"));
         } catch (Exception e) {
