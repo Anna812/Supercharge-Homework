@@ -40,13 +40,13 @@ public class Logic implements ILogic {
         if(parameter.equals("u")) {
             return fileIO.readTransactionsFromFile();
         } else if (parameter.equalsIgnoreCase("deposit")) {
-
+            return getCertainTypeOfTransactions("Deposit");
         }
         else if (parameter.equalsIgnoreCase("withdraw")) {
-
+            return getCertainTypeOfTransactions("Withdraw");
         }
         else if (parameter.equalsIgnoreCase("transfer")) {
-
+            return getCertainTypeOfTransactions("Transfer");
         }
         else if (parameter.equalsIgnoreCase("desc")) {
 
@@ -54,5 +54,17 @@ public class Logic implements ILogic {
         else if (parameter.equalsIgnoreCase("asc")) {
 
         }
+        return null;
+    }
+
+    public ArrayList<String> getCertainTypeOfTransactions(String typeOfTransaction) {
+        ArrayList<String> history = fileIO.readTransactionsFromFile();
+        ArrayList result = new ArrayList();
+        for (String temp : history) {
+            if(temp.contains(typeOfTransaction)) {
+                result.add(temp);
+            }
+        }
+        return result;
     }
 }
