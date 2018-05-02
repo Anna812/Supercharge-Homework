@@ -30,8 +30,10 @@ public class Logic implements ILogic {
     }
 
     @Override
-    public void transfer(int amount, String account) {
-
+    public void transfer(int amount, String accountToTransfer) {
+        account.balance = account.balance - amount;
+        Transaction newTransfer = new Transaction("Transfer", amount);
+        fileIO.writeTransactionsToFile(newTransfer, account.balance);
     }
 
     @Override
