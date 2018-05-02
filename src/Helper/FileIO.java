@@ -1,5 +1,7 @@
 package Helper;
 
+import Models.Transaction;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.charset.Charset;
@@ -28,8 +30,9 @@ public class FileIO {
         return fileContent;
     }
 
-    public void writeTransactionsToFile(String transaction) {
-        List<String> input = Arrays.asList(transaction);
+    public void writeTransactionsToFile(Transaction transaction, int balance) {
+        String transactionData = transaction.type + " " + transaction.amount + " " + balance + " " + transaction.timeOfTransaction;
+        List<String> input = Arrays.asList(transactionData);
         Path file = Paths.get(filePath);
 
         try {
