@@ -1,11 +1,14 @@
 package App;
 
+import BankingLogic.Logic;
+
 import java.util.Scanner;
 
 public class CoreBankingApp {
     static Scanner userInput =  new Scanner(System.in);
 
     public static void main(String[] args) {
+        Logic logic = new Logic();
         String info = "Welcome at your core banking service. Type \"d\" to deposit money. \n" +
                 "Type \"w\" to withdraw money. \n" +
                 "Type \"t\" to transfer money. \n" +
@@ -16,13 +19,23 @@ public class CoreBankingApp {
         while(userInput.hasNext()) {
             String input = userInput.next();
             if(input.equals("d")){
-                //deposit logic
+                System.out.println("Type the amount you want to deposit, please.");
+                int amount = Integer.parseInt(userInput.next());
+                logic.deposit(amount);
             } else if (input.equals("w")) {
-                // withdraw logic
+                System.out.println("Type the amount you want to withdraw, please.");
+                int amount = Integer.parseInt(userInput.next());
+                logic.withdraw(amount);
             } else if (input.equals("t")) {
-                // transfer logic
+                System.out.println("Type the amount you want to transfer, please.");
+                int amount = Integer.parseInt(userInput.next());
+                System.out.println("Type the account you want to transfer to, please.");
+                logic.transfer(amount, userInput.next());
             } else if (input.equals("h")) {
-                // history logic
+                System.out.printf("If you want an unsorted history, type \"u\".");
+                System.out.printf("If you want to sort account history by type of transaction, please write that given transaction type e.g. deposit, withdraw, transfer.");
+                System.out.printf("If you want  to sort account history by date, please write \"Desc\" if you want a descending order os \"Asc\" if you want to see an ascending order");
+                logic.history(userInput.next());
             } else if (input.equals("q")) {
                 System.out.println("Thank you for using our service!");
                 break;

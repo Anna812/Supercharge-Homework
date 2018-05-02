@@ -1,6 +1,6 @@
 package BankingLogic;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Logic implements ILogic {
     @Override
@@ -19,7 +19,7 @@ public class Logic implements ILogic {
     }
 
     @Override
-    public List<String> history(String parameter) {
+    public ArrayList<String> history(String parameter) {
         return null;
     }
 }
