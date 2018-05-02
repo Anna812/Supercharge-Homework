@@ -1,3 +1,5 @@
+package BankingLogic;
+
 import java.util.List;
 
 public interface ILogic {
