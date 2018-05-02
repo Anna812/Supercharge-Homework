@@ -17,9 +17,9 @@ public class Logic implements ILogic {
 
     @Override
     public void deposit(int amount) {
-        account.balance = account.balance - amount;
+        account.balance = account.balance + amount;
         Transaction newDeposit = new Transaction("Deposit", amount);
-        fileIO.writeTransactionsToFile(newDeposit);
+        fileIO.writeTransactionsToFile(newDeposit, account.balance);
     }
 
     @Override
