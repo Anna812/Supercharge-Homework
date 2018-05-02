@@ -24,7 +24,7 @@ public class Logic implements ILogic {
         fileIO.writeTransactionsToFile(newDeposit, account.balance);
     }
 
-    public ArrayList<String> getAccountHistory(String parameter) {
+    public ArrayList<Transaction> getAccountHistory(String parameter) {
         if(parameter.equals("u")) {
             return fileIO.readTransactionsFromFile();
         } else if (parameter.equalsIgnoreCase("deposit")) {
@@ -45,11 +45,11 @@ public class Logic implements ILogic {
         return null;
     }
 
-    private ArrayList<String> getCertainTypeOfTransactions(String typeOfTransaction) {
-        ArrayList<String> history = fileIO.readTransactionsFromFile();
+    private ArrayList<Transaction> getCertainTypeOfTransactions(String typeOfTransaction) {
+        ArrayList<Transaction> history = fileIO.readTransactionsFromFile();
         ArrayList result = new ArrayList();
-        for (String temp : history) {
-            if(temp.contains(typeOfTransaction)) {
+        for (Transaction temp : history) {
+            if(temp.type.equalsIgnoreCase(typeOfTransaction)) {
                 result.add(temp);
             }
         }
