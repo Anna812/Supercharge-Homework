@@ -24,7 +24,9 @@ public class Logic implements ILogic {
 
     @Override
     public void withdraw(int amount) {
-
+        account.balance = account.balance - amount;
+        Transaction newWithdraw = new Transaction("Withdraw", amount);
+        fileIO.writeTransactionsToFile(newWithdraw, account.balance);
     }
 
     @Override
