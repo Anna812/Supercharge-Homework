@@ -3,7 +3,6 @@ package BankingLogic;
 import Helper.FileIO;
 import Models.Account;
 import Models.Transaction;
-
 import java.util.ArrayList;
 
 public class Logic implements ILogic {
@@ -38,6 +37,22 @@ public class Logic implements ILogic {
 
     @Override
     public ArrayList<String> history(String parameter) {
-        return null;
+        if(parameter.equals("u")) {
+            return fileIO.readTransactionsFromFile();
+        } else if (parameter.equalsIgnoreCase("deposit")) {
+
+        }
+        else if (parameter.equalsIgnoreCase("withdraw")) {
+
+        }
+        else if (parameter.equalsIgnoreCase("transfer")) {
+
+        }
+        else if (parameter.equalsIgnoreCase("desc")) {
+
+        }
+        else if (parameter.equalsIgnoreCase("asc")) {
+
+        }
     }
 }
